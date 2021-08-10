@@ -1,4 +1,27 @@
+"=============================================================================
+"" spotivi.vim --- spotivi layer file for SpaceVim
+" Copyright (c) 2016-2020 Wang Shidong & Contributors
+" " Author: Javier Acevedo C < javier.iacevedoc@gmail.com >
+" " URL: https://spacevim.org
+" " License: GPLv3
+" "=============================================================================
+"
 let s:JOB = SpaceVim#api#import('job')
+
+
+function! SpaceVim#layers#git#plugins() abort
+    let plugins = []
+    call add(plugins, ['Shougo/vimproc',   { 'merged' : 0}])
+    return plugins
+endfunction
+
+function! SpaceVim#layers#git#config() abort
+    call SpaceVim#custom#SPCGroupName(['S'], '+Spotivi')
+    call SpaceVim#custom#SPC('nore', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
+    call SpaceVim#custom#SPC('nore', ['S','p'], 'call spotivi#previousSong()', 'Prev Song', 1)
+    call SpaceVim#custom#SPC('nore', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
+    call SpaceVim#custom#SPC('nore', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
+endfunction
 
 function! s:on_stdout(id, data, event) abort
     echom 'Playing ♩ ♪ ♫ ♬ ' . a:data[0]
@@ -69,13 +92,5 @@ function! spotivi#addToMontly() abort
         \ 'on_exit' : function('s:on_exit'),
         \ }
         \ )
-endfunction
-
-function! spotivi#init() abort
-    call SpaceVim#custom#SPCGroupName(['S'], '+Spotivi')
-    call SpaceVim#custom#SPC('nore', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
-    call SpaceVim#custom#SPC('nore', ['S','p'], 'call spotivi#previousSong()', 'Prev Song', 1)
-    call SpaceVim#custom#SPC('nore', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
-    call SpaceVim#custom#SPC('nore', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
 endfunction
 
