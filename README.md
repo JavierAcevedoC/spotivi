@@ -3,8 +3,9 @@
 ## An spotibar plugin added as [SpaceVim](https://spacevim.org/) layer
 
 ## Important!
-You need install [ spotibar ](https://github.com/conor-f/spotibar) follow the instructions and [vim-proc](https://github.com/Shougo/vimproc.vim)
-and remember use neovim python integration.
+This project is basically a wrapper so, you need install and configure [ spotibar ](https://github.com/conor-f/spotibar) follow the instructions.
+
+Install [vim-proc](https://github.com/Shougo/vimproc.vim) and remember use neovim python integration.
 ```sh
     pip install neovim
 ```
