@@ -1,3 +1,3 @@
-function! Spotivi#init(argv) abort
+function! Spotivi#init() abort
         call SpaceVim#plugins#spotivi#Init()
 endfunction
