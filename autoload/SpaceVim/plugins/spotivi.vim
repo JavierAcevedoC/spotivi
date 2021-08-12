@@ -8,7 +8,7 @@
 "
 let s:JOB = SpaceVim#api#import('job')
 
-function! Init() abort
+function! SpaceVim#plugins#spotivi#init() abort
     " let g:_spacevim_mappings_space.S = get(g:_spacevim_mappings_space, 'S',  {'name' : '+Spotivi'})
     " call SpaceVim#mapping#space#def('noremap', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
     " call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
