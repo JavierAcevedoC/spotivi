@@ -10,19 +10,13 @@ let s:JOB = SpaceVim#api#import('job')
 
 function! SpaceVim#plugins#spotivi#init() abort
 
-    echom 'Starting init!'
+    echom 'Init!'
     let g:_spacevim_mappings_space.S = get(g:_spacevim_mappings_space, 'S',  {'name' : '+Spotivi'})
-    call SpaceVim#mapping#space#def('noremap', ['S','n'], 'call s:nextSong()', 'Next Song', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call s:previousSong()','Prev Song', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','[SPC]'], 'call s:toggle()', 'Toggle Play/Pause', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','a'], 'call s:addToMontly()', 'Add to my montly playlist', 1)
-    "
-    " call SpaceVim#custom#SPCGroupName(['S'], '+Spotivi')
-    " call SpaceVim#custom#SPC('nore', ['S','n'], 'call s:nextSong()', 'Next Song', 1)
-    " call SpaceVim#custom#SPC('nore', ['S','p'], 'call s:previousSong()','Prev Song', 1)
-    " call SpaceVim#custom#SPC('nore', ['S','[SPC]'], 'call s:toggle()', 'Toggle Play/Pause', 1)
-    " call SpaceVim#custom#SPC('nore', ['S','a'], 'call s:addToMontly()', 'Add to my montly playlist', 1)
-    echom 'Initialized!'
+    call SpaceVim#mapping#space#def('noremap', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
+    call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
+    call SpaceVim#mapping#space#def('noremap', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
+    call SpaceVim#mapping#space#def('noremap', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
+    echom 'Finishing Mapped!'
 endfunction
 
 function! s:on_stdout(id, data, event) abort
@@ -41,7 +35,7 @@ function! s:onchange() abort
     let timerid = timer_start(2000,{-> execute('call s:getSong()') })
 endfunction
 
-function! s:getSong() abort
+function! spotivi#getSong() abort
     let cmd = ['spotibar', '--get-currently-playing']
     call s:JOB.start(cmd,
         \ {
@@ -52,7 +46,7 @@ function! s:getSong() abort
         \ )
 endfunction
 
-function! s:nextSong() abort
+function! spotivi#nextSong() abort
     let cmd = ['spotibar', '--next-track']
     call s:JOB.start(cmd,
         \ {
@@ -63,7 +57,7 @@ function! s:nextSong() abort
         \ )
 endfunction
 
-function! s:previousSong() abort
+function! spotivi#previousSong() abort
     let cmd = ['spotibar', '--previous-track']
     call s:JOB.start(cmd,
         \ {
@@ -74,7 +68,7 @@ function! s:previousSong() abort
         \ )
 endfunction
 
-function! s:toggle() abort
+function! spotivi#toggle() abort
     let cmd = ['spotibar', '--toggle-playback']
     call s:JOB.start(cmd,
         \ {
@@ -85,7 +79,7 @@ function! s:toggle() abort
         \ )
 endfunction
 
-function! s:addToMontly() abort
+function! spotivi#addToMontly() abort
     let cmd = ['spotibar', '--add-track-to-monthly-playlist']
     call s:JOB.start(cmd,
         \ {
