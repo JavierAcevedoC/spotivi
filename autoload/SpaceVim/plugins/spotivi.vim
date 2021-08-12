@@ -30,7 +30,7 @@ endfunction
 function! s:on_exit(id, data, event) abort
 endfunction
 
-function! s:onchange() abort
+function! spotivi#onchange() abort
     redraw
     let timerid = timer_start(2000,{-> execute('call s:getSong()') })
 endfunction
