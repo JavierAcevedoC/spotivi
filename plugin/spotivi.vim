@@ -9,11 +9,18 @@
 let s:JOB = SpaceVim#api#import('job')
 
 function! SpaceVim#layers#spotivi#config() abort
-    let g:_spacevim_mappings_space.S = get(g:_spacevim_mappings_space, 'S',  {'name' : '+Spotivi'})
-    call SpaceVim#mapping#space#def('noremap', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
-    call SpaceVim#mapping#space#def('noremap', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
+    " let g:_spacevim_mappings_space.S = get(g:_spacevim_mappings_space, 'S',  {'name' : '+Spotivi'})
+    " call SpaceVim#mapping#space#def('noremap', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
+    " call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
+    " call SpaceVim#mapping#space#def('noremap', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
+    " call SpaceVim#mapping#space#def('noremap', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
+
+    call SpaceVim#custom#SPCGroupName(['S'], '+Spotivi')
+    call SpaceVim#custom#SPC('nore', ['S','n'], 'call spotivi#nextSong()', 'Next Song', 1)
+    call SpaceVim#custom#SPC('nore', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
+    call SpaceVim#custom#SPC('nore', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
+    call SpaceVim#custom#SPC('nore', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
+
 endfunction
 
 function! s:on_stdout(id, data, event) abort
