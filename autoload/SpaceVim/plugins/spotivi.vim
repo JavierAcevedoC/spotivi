@@ -32,7 +32,7 @@ endfunction
 
 function! spotivi#onchange() abort
     redraw
-    let timerid = timer_start(2000,{-> execute('call s:getSong()') })
+    let timerid = timer_start(2000,{-> execute('call spotivi#getSong()') })
 endfunction
 
 function! spotivi#getSong() abort
