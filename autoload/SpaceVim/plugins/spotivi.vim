@@ -14,13 +14,13 @@ function! Init() abort
     " call SpaceVim#mapping#space#def('noremap', ['S','p'], 'call spotivi#previousSong()','Prev Song', 1)
     " call SpaceVim#mapping#space#def('noremap', ['S','[SPC]'], 'call spotivi#toggle()', 'Toggle Play/Pause', 1)
     " call SpaceVim#mapping#space#def('noremap', ['S','a'], 'call spotivi#addToMontly()', 'Add to my montly playlist', 1)
-
+    echom 'Starting!'
     call SpaceVim#custom#SPCGroupName(['S'], '+Spotivi')
     call SpaceVim#custom#SPC('nore', ['S','n'], 'call s:nextSong()', 'Next Song', 1)
     call SpaceVim#custom#SPC('nore', ['S','p'], 'call s:previousSong()','Prev Song', 1)
     call SpaceVim#custom#SPC('nore', ['S','[SPC]'], 'call s:toggle()', 'Toggle Play/Pause', 1)
     call SpaceVim#custom#SPC('nore', ['S','a'], 'call s:addToMontly()', 'Add to my montly playlist', 1)
-
+    echom 'Initialized!'
 endfunction
 
 function! s:on_stdout(id, data, event) abort
